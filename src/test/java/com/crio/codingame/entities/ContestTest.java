@@ -40,6 +40,35 @@ public class ContestTest {
    }
 
 
+    @Test
+    @DisplayName("#2 Contest should be created successfully!")
+    public void testContestCreation() throws InvalidContestException {
+        // Create mock questions
+        List<Question> questions =  new ArrayList<Question>(){
+           {
+           add(new Question("Question1",Level.LOW,10));
+           add(new Question("Question2",Level.LOW,20));
+           add(new Question("Question3",Level.LOW,30));
+           }
+       };
+
+        // Create a mock User
+        User mockUser = new User("John",0);
+
+        // Create a new contest
+        Contest contest = new Contest("Test Contest", questions, Level.LOW, mockUser, ContestStatus.NOT_STARTED);
+
+        // Assert that contest is not null
+        Assertions.assertNotNull(contest);
+
+        // Assert contest details
+        Assertions.assertEquals("Test Contest", contest.getName());
+        Assertions.assertEquals(Level.LOW, contest.getLevel());
+        Assertions.assertEquals(mockUser, contest.getCreator());
+        Assertions.assertEquals(ContestStatus.NOT_STARTED, contest.getContestStatus());
+        Assertions.assertTrue(contest.getQuestions().containsAll(questions));
+    }
+
 
 
 }
