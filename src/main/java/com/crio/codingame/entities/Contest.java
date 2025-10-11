@@ -13,13 +13,21 @@ public class Contest extends BaseEntity{
     private final User creator;
     private ContestStatus contestStatus;
 
+    public Contest(Contest contest){
+        this(contest.id,contest.name,contest.questions,contest.level,contest.creator,contest.contestStatus);
+    }
+
+    public Contest(String id, String name, List<Question> questions, Level level, User creator,
+            ContestStatus contestStatus) {
+        this(name,questions,level,creator,contestStatus);
+        this.id = id;
+    }
 
     public Contest(String name, List<Question> questions, Level level, User creator,
-            ContestStatus contestStatus) throws InvalidContestException {
+            ContestStatus contestStatus) {
         this.name = name;
         validateQuestionList(questions, level);
         this.questions = questions;
-
         this.level = level;
         this.creator = creator;
         this.contestStatus = contestStatus;
@@ -40,7 +48,11 @@ public class Contest extends BaseEntity{
 
     }
 
+    // TODO: CRIO_TASK_MODULE_SERVICES
+    // Change the Contest Status to ENDED
 
+    public void endContest(){
+    }
     
     public String getName() {
         return name;
