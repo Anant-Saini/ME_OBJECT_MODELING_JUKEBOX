@@ -57,7 +57,17 @@ public class ContestService implements IContestService {
     // Return a specific List of Random Questions as specified by numQuestion.
 
     private List<Question> pickQuestionsList(final List<Question> questions,final Integer numQuestion){
-     return Collections.emptyList();
+     if(questions.size() <= numQuestion)
+        return questions;
+     List<Question> qPool = questions.stream().collect(Collectors.toList());
+     List<Question> selectedQues = new ArrayList<>();
+     Random random = new Random();
+     for(int i=1; i<=numQuestion; i++) {
+        int ranIndex = random.nextInt(qPool.size());
+        selectedQues.add(qPool.get(ranIndex));
+        qPool.remove(ranIndex);
+     }
+     return selectedQues;
     }
 
     // TODO: CRIO_TASK_MODULE_SERVICES
@@ -67,7 +77,10 @@ public class ContestService implements IContestService {
 
     @Override
     public List<Contest> getAllContestLevelWise(Level level) {
-     return Collections.emptyList();
+      if(level == null)
+        return contestRepository.findAll();  
+
+      return contestRepository.findAllContestLevelWise(level);
     }
 
     @Override

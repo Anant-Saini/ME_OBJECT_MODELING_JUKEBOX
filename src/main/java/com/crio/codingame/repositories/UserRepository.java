@@ -40,7 +40,7 @@ public class UserRepository implements IUserRepository{
 
     @Override
     public List<User> findAll() {
-     return Collections.emptyList();
+     return userMap.values().stream().collect(Collectors.toList());
     }
 
     @Override
@@ -78,7 +78,7 @@ public class UserRepository implements IUserRepository{
 
     @Override
     public Optional<User> findByName(String name) {
-     return Optional.empty();
+        return userMap.values().stream().filter( usr -> name.equals(usr.getName()) ).findFirst(); 
     }
     
 }

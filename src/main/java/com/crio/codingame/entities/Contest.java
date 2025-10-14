@@ -52,6 +52,7 @@ public class Contest extends BaseEntity{
     // Change the Contest Status to ENDED
 
     public void endContest(){
+        this.contestStatus = ContestStatus.ENDED;
     }
     
     public String getName() {

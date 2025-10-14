@@ -27,7 +27,11 @@ public class QuestionService implements IQuestionService{
 
     @Override
     public List<Question> getAllQuestionLevelWise(Level level) {
-     return Collections.emptyList();
+     if(level == null)
+        return questionRepository.findAll();
+
+     return questionRepository.findAllQuestionLevelWise(level);
+    
     }
     
 }

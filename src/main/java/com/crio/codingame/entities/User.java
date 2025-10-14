@@ -57,7 +57,7 @@ public class User extends BaseEntity {
     // Check if Contest is present in the User or Not
 
     public boolean checkIfContestExists(Contest contest){
-        return false;
+        return contests.contains(contest);
     }
 
     public void addContestQuestion(Contest contest, List<Question> qList){
