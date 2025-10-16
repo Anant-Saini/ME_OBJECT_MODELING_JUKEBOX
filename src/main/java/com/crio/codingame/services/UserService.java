@@ -65,10 +65,6 @@ public class UserService implements IUserService {
         return new UserRegistrationDto(contest.getName(), user.getName(),RegisterationStatus.REGISTERED);
     }
 
-    // TODO: CRIO_TASK_MODULE_SERVICES
-    // Withdraw the user from the contest
-    // Hint :- Refer Unit Testcases withdrawContest method
-
     @Override
     public UserRegistrationDto withdrawContest(String contestId, String userName) throws ContestNotFoundException, UserNotFoundException, InvalidOperationException {
         Contest contest = contestRepository.findById(contestId).orElseThrow(() -> new ContestNotFoundException("Cannot Withdraw from Contest. Contest for given id:"+contestId+" not found!"));
@@ -88,6 +84,7 @@ public class UserService implements IUserService {
         user.deleteContest(contest);
         userRepository.save(user);
         return new UserRegistrationDto(contest.getName(), user.getName(),RegisterationStatus.NOT_REGISTERED);
+
     }
     
 }

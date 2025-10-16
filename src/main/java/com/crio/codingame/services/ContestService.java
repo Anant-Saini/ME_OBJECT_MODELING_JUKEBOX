@@ -119,6 +119,7 @@ public class ContestService implements IContestService {
     }
 
     //Reference:- https://www.geeksforgeeks.org/randomly-select-items-from-a-list-in-java/
+
     private List<Question> pickRandomQuestions(final List<Question> questions){
         List<Question> qList = questions.stream().collect(Collectors.toList());
         int size = qList.size();

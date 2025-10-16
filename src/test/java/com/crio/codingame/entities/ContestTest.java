@@ -69,8 +69,6 @@ public class ContestTest {
         Assertions.assertTrue(contest.getQuestions().containsAll(questions));
     }
 
-
-
     @DisplayName("endContest method Should End Contest")
     public void endContest_ShouldEndContest(){
         //Arrange

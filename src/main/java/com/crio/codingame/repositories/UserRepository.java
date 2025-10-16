@@ -72,13 +72,10 @@ public class UserRepository implements IUserRepository{
         return 0;
     }
 
-    // TODO: CRIO_TASK_MODULE_SERVICES
-    // Find the User Present in the Repository provided name
-    // Tip:- Use Java Streams
-
     @Override
     public Optional<User> findByName(String name) {
         return userMap.values().stream().filter( usr -> name.equals(usr.getName()) ).findFirst(); 
+
     }
     
 }
