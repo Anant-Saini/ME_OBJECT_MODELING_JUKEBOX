@@ -22,6 +22,16 @@ public class WithdrawContestCommand implements ICommand{
 
     @Override
     public void execute(List<String> tokens) {
+        String contestID = tokens.get(1);
+        String userName = tokens.get(2);
+
+        try {
+            UserRegistrationDto userRegistrationDto = userService.withdrawContest(contestID, userName);
+            System.out.println(userRegistrationDto.toString());
+
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
     
 }

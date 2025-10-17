@@ -23,6 +23,12 @@ public class LeaderBoardCommand implements ICommand{
 
     @Override
     public void execute(List<String> tokens) {
+
+        ScoreOrder scoreOrder = ScoreOrder.valueOf(tokens.get(1));
+
+
+        List<User> users = userService.getAllUserScoreOrderWise(scoreOrder);
+        System.out.println(users.toString());
     }
     
 }
