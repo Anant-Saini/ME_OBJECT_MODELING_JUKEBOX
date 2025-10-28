@@ -23,15 +23,15 @@ public class UserRepository implements IUserRepository{
     }
 
     @Override
-    public User save(User entity) {
-        if( entity.getId() == null ){
+    public User save(User user) {
+        if( user.getId() == null ){
             autoIncrement++;
-            User u = new User(Integer.toString(autoIncrement),entity.getName(),entity.getScore());
+            User u = new User(Integer.toString(autoIncrement),user.getName(),user.getScore());
             userMap.put(u.getId(),u);
             return u;
         }
-        userMap.put(entity.getId(),entity);
-        return entity;
+        userMap.put(user.getId(),user);
+        return user;
     }
 
     // TODO: CRIO_TASK_MODULE_SERVICES

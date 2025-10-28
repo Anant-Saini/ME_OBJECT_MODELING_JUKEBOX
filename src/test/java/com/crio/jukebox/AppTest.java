@@ -71,6 +71,7 @@ public class AppTest {
 
         //Assert
         Assertions.assertEquals(expectedOutput,outputStreamCaptor.toString().trim());
+        //System.out.println(outputStreamCaptor.toString().trim());
  
 	}
 
